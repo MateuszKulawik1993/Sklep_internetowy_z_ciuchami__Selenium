@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sportswear Shop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Sportswear Shop</h1>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#products">Products</a>
+            <a href="#about">About Us</a>
+            <a href="#contact">Contact</a>
+        </nav>  
+    </header>
+
+    <section id="home">
+        <h2>Welcome to our Sportswear Shop!</h2>
+        <p>Your one-stop shop for the best sportswear. Shop now and get ready to perform at your best!</p>
+    </section>
+
+    <!-- Sekcja filtrowania produktów -->
+    <section id="filter">
+        <h2>Filter Products</h2>
+        <select id="priceFilter" onchange="filterProducts()">
+            <option value="all">All Prices</option>
+            <option value="under100">Below 100 PLN</option>
+            <option value="above100">Above 100 PLN</option>
+        </select>
+    </section>
+
+    <!-- Sekcja produktów z dodatkowymi produktami -->
+    <section id="products">
+        <h2>Our Products</h2>
+        <div class="product" data-price="99">
+            <img src="tshirt.jpg" alt="Sports T-shirt">
+            <p>Sports T-Shirt</p>
+            <p>Price: 99 PLN</p>
+            <button>Buy now</button>
+        </div>
+        <div class="product" data-price="89">
+            <img src="shorts.jpg" alt="Sports shorts">
+            <p>Sports Shorts</p>
+            <p>Price: 89 PLN</p>
+            <button>Buy now</button>
+        </div>
+        <div class="product" data-price="199">
+            <img src="shoes.jpg" alt="Sports shoes">
+            <p>Sports Shoes</p>
+            <p>Price: 199 PLN</p>
+            <button>Buy now</button>
+        </div>
+        <div class="product" data-price="149">
+            <img src="jacket.jpg" alt="Sports Jacket">
+            <p>Sports Jacket</p>
+            <p>Price: 149 PLN</p>
+            <button>Buy now</button>
+        </div>
+        <div class="product" data-price="49">
+            <img src="cap.jpg" alt="Sports Cap">
+            <p>Sports Cap</p>
+            <p>Price: 49 PLN</p>
+            <button>Buy now</button>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <p>We are a leading store in providing premium sportswear for athletes and fitness enthusiasts. Our mission is to provide top-quality clothing for every kind of sport, ensuring comfort and performance.</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </section>
+    
+    <footer>
+        <p>Kontakt: shop@sportshop.com</p>
+        <p>&copy; 2025 Sportswear Shop</p>
+    </footer>
+
+    <!-- JavaScript do filtrowania produktów -->
+    <script>
+        function filterProducts() {
+            const filter = document.getElementById("priceFilter").value;
+            const products = document.querySelectorAll(".product");
+
+            products.forEach(product => {
+                const price = parseInt(product.getAttribute("data-price"));
+
+                if (filter === "under100" && price >= 100) {
+                    product.style.display = "none";
+                } else if (filter === "above100" && price < 100) {
+                    product.style.display = "none";
+                } else {
+                    product.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
